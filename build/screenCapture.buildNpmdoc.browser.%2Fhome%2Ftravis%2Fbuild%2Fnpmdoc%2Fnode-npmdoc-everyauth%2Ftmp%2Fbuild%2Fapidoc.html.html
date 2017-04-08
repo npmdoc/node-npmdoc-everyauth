@@ -1,0 +1,1315 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/bnoguchi/everyauth/">everyauth (v0.4.9)</a>
+</h1>
+<h4>Auth solution (password, facebook, &amp; more) for your node.js Connect &amp; Express apps</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth">module everyauth</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">everyauth.</span>debug</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.addRequestGetter">
+            function <span class="apidocSignatureSpan">everyauth.</span>addRequestGetter
+            <span class="apidocSignatureSpan">(name, fn, isAsync)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.addRequestMethod">
+            function <span class="apidocSignatureSpan">everyauth.</span>addRequestMethod
+            <span class="apidocSignatureSpan">(name, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.helpExpress">
+            function <span class="apidocSignatureSpan">everyauth.</span>helpExpress
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.middleware">
+            function <span class="apidocSignatureSpan">everyauth.</span>middleware
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.promise">
+            function <span class="apidocSignatureSpan">everyauth.</span>promise
+            <span class="apidocSignatureSpan">(_module, values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.routeTriggeredSequence">
+            function <span class="apidocSignatureSpan">everyauth.</span>routeTriggeredSequence
+            <span class="apidocSignatureSpan">(name, _module)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.step">
+            function <span class="apidocSignatureSpan">everyauth.</span>step
+            <span class="apidocSignatureSpan">(name, _module)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence">
+            function <span class="apidocSignatureSpan">everyauth.</span>stepSequence
+            <span class="apidocSignatureSpan">(name, module)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>_req</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>enabled</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>modules</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>promise.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>routeTriggeredSequence.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>step.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>stepSequence.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.promise">module everyauth.promise</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.promise.promise">
+            function <span class="apidocSignatureSpan">everyauth.</span>promise
+            <span class="apidocSignatureSpan">(_module, values)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.promise.prototype">module everyauth.promise.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.promise.prototype.breakTo">
+            function <span class="apidocSignatureSpan">everyauth.promise.prototype.</span>breakTo
+            <span class="apidocSignatureSpan">(seqName)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.routeTriggeredSequence">module everyauth.routeTriggeredSequence</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.routeTriggeredSequence.routeTriggeredSequence">
+            function <span class="apidocSignatureSpan">everyauth.</span>routeTriggeredSequence
+            <span class="apidocSignatureSpan">(name, _module)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.routeTriggeredSequence.super_">
+            function <span class="apidocSignatureSpan">everyauth.routeTriggeredSequence.</span>super_
+            <span class="apidocSignatureSpan">(name, module)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.routeTriggeredSequence.prototype">module everyauth.routeTriggeredSequence.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.routeTriggeredSequence.prototype.routeHandler">
+            function <span class="apidocSignatureSpan">everyauth.routeTriggeredSequence.prototype.</span>routeHandler
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.step">module everyauth.step</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.step.step">
+            function <span class="apidocSignatureSpan">everyauth.</span>step
+            <span class="apidocSignatureSpan">(name, _module)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.step.prototype">module everyauth.step.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.step.prototype._unwrapArgs">
+            function <span class="apidocSignatureSpan">everyauth.step.prototype.</span>_unwrapArgs
+            <span class="apidocSignatureSpan">(seq)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.step.prototype.clone">
+            function <span class="apidocSignatureSpan">everyauth.step.prototype.</span>clone
+            <span class="apidocSignatureSpan">(name, _module)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.step.prototype.exec">
+            function <span class="apidocSignatureSpan">everyauth.step.prototype.</span>exec
+            <span class="apidocSignatureSpan">(seq)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.stepSequence">module everyauth.stepSequence</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.stepSequence">
+            function <span class="apidocSignatureSpan">everyauth.</span>stepSequence
+            <span class="apidocSignatureSpan">(name, module)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.stepSequence.prototype">module everyauth.stepSequence.prototype</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>isSeq</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.prototype._bind">
+            function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>_bind
+            <span class="apidocSignatureSpan">(priorPromise, nextStep)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.prototype._transposeArgs">
+            function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>_transposeArgs
+            <span class="apidocSignatureSpan">(args)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.prototype.clone">
+            function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>clone
+            <span class="apidocSignatureSpan">(submodule)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.prototype.materialize">
+            function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>materialize
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.prototype.start">
+            function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>start
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.stepSequence.prototype.validateSteps">
+            function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>validateSteps
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>_propertiesToMaterialize</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.everyauth.utils">module everyauth.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.utils.clone">
+            function <span class="apidocSignatureSpan">everyauth.utils.</span>clone
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.utils.extractHostname">
+            function <span class="apidocSignatureSpan">everyauth.utils.</span>extractHostname
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.everyauth.utils.merge">
+            function <span class="apidocSignatureSpan">everyauth.utils.</span>merge
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth" id="apidoc.module.everyauth">module everyauth</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.addRequestGetter" id="apidoc.element.everyauth.addRequestGetter">
+        function <span class="apidocSignatureSpan">everyauth.</span>addRequestGetter
+        <span class="apidocSignatureSpan">(name, fn, isAsync)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addRequestGetter = function (name, fn, isAsync) {
+  this._req._getters[name] = fn;
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+everyauth
+  .addRequestMethod('logout', function () {
+    var req = this;
+    delete req.session.auth;
+  })
+  .<span class="apidocCodeKeywordSpan">addRequestGetter</span>('loggedIn', function () {
+    var req = this;
+    return !!(req.session &amp;&amp; req.session.auth &amp;&amp; req.session.auth.loggedIn);
+  });
+
+everyauth.modules = {};
+everyauth.enabled = {};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.addRequestMethod" id="apidoc.element.everyauth.addRequestMethod">
+        function <span class="apidocSignatureSpan">everyauth.</span>addRequestMethod
+        <span class="apidocSignatureSpan">(name, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addRequestMethod = function (name, fn) {
+  this._req._methods[name] = fn;
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+everyauth.addRequestGetter = function (name, fn, isAsync) {
+this._req._getters[name] = fn;
+return this;
+};
+
+everyauth
+.<span class="apidocCodeKeywordSpan">addRequestMethod</span>('logout', function () {
+  var req = this;
+  delete req.session.auth;
+})
+.addRequestGetter('loggedIn', function () {
+  var req = this;
+  return !!(req.session &amp;&amp; req.session.auth &amp;&amp; req.session.auth.loggedIn);
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.helpExpress" id="apidoc.element.everyauth.helpExpress">
+        function <span class="apidocSignatureSpan">everyauth.</span>helpExpress
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">helpExpress = function () {
+  console.warn('everyauth.helpExpress is being deprecated. helpExpress is now automatically invoked when it detects express. So
+remove everyauth.helpExpress from your code');
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+To enable them:
+
+```javascript
+var express = require('express')
+  , everyauth = require('everyauth')
+  , app = express.createServer();
+
+everyauth.<span class="apidocCodeKeywordSpan">helpExpress</span>(app);
+```
+
+Then, from within your views, you will have access to the following helpers methods
+attached to the helper, `everyauth`:
+
+- `everyauth.loggedIn`
+- `everyauth.user` - the User document associated with the session
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.middleware" id="apidoc.element.everyauth.middleware">
+        function <span class="apidocSignatureSpan">everyauth.</span>middleware
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">middleware = function (opts) {
+  opts = merge({
+    autoSetupRoutes: true
+  }, opts);
+  var userAlias = everyauth.expressHelperUserAlias || 'user';
+  var router = new ExpressRouter;
+
+  if (opts.autoSetupRoutes) {
+    var router = new ExpressRouter();
+    var modules = everyauth.enabled;
+    for (var _name in modules) {
+      var _module = modules[_name];
+      _module.validateSequences();
+      _module.routeApp(router);
+    }
+  }
+
+  return function (req, res, next) {
+    fetchUserFromSession(req, function (err) {
+      addRequestLocals(req, res, userAlias);
+      registerReqGettersAndMethods(req);
+      if (router) {
+        router._dispatch(req, res, next);
+      } else {
+        next();
+      }
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // Step 2 code
+    var express = require('express');
+    var app = express();
+    app
+      .use(express.bodyParser())
+      .use(express.cookieParser('mr ripley'))
+      .use(express.session())
+      .use(everyauth.<span class="apidocCodeKeywordSpan">middleware</span>(app));
+    ```
+
+## Example Application
+
+There is an example application at [./example](https://github.com/bnoguchi/everyauth/tree/master/example)
+
+To run it:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.promise" id="apidoc.element.everyauth.promise">
+        function <span class="apidocSignatureSpan">everyauth.</span>promise
+        <span class="apidocSignatureSpan">(_module, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">promise = function (_module, values) {
+  if (values)
+    Promise.call(this, values);
+  else
+    Promise.call(this);
+  this.module = _module;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.routeTriggeredSequence" id="apidoc.element.everyauth.routeTriggeredSequence">
+        function <span class="apidocSignatureSpan">everyauth.</span>routeTriggeredSequence
+        <span class="apidocSignatureSpan">(name, _module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RouteTriggeredSequence(name, _module) {
+  StepSequence.call(this, name, _module);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.step" id="apidoc.element.everyauth.step">
+        function <span class="apidocSignatureSpan">everyauth.</span>step
+        <span class="apidocSignatureSpan">(name, _module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Step(name, _module) {
+  this.name = name;
+
+  // defineProperty; otherwise,
+  // clone will overflow when we clone a module
+  Object.defineProperty(this, 'module', { value: _module });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence" id="apidoc.element.everyauth.stepSequence">
+        function <span class="apidocSignatureSpan">everyauth.</span>stepSequence
+        <span class="apidocSignatureSpan">(name, module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function StepSequence(name, module) {
+  this.name = name;
+  this.module = module;
+  this.orderedStepNames = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.promise" id="apidoc.module.everyauth.promise">module everyauth.promise</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.promise.promise" id="apidoc.element.everyauth.promise.promise">
+        function <span class="apidocSignatureSpan">everyauth.</span>promise
+        <span class="apidocSignatureSpan">(_module, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">promise = function (_module, values) {
+  if (values)
+    Promise.call(this, values);
+  else
+    Promise.call(this);
+  this.module = _module;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.promise.prototype" id="apidoc.module.everyauth.promise.prototype">module everyauth.promise.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.promise.prototype.breakTo" id="apidoc.element.everyauth.promise.prototype.breakTo">
+        function <span class="apidocSignatureSpan">everyauth.promise.prototype.</span>breakTo
+        <span class="apidocSignatureSpan">(seqName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">breakTo = function (seqName) {
+  if (this._timeout) clearTimeout(this._timeout);
+
+  var args = Array.prototype.slice.call(arguments, 1);
+  var _module = this.module
+    , seq = _module._stepSequences[seqName];
+  if (_module.everyauth.debug)
+    console.log('breaking out to ' + seq.name);
+  seq = seq.materialize();
+  seq.start.apply(seq, args);
+  // TODO Garbage collect the abandoned sequence
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.routeTriggeredSequence" id="apidoc.module.everyauth.routeTriggeredSequence">module everyauth.routeTriggeredSequence</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.routeTriggeredSequence.routeTriggeredSequence" id="apidoc.element.everyauth.routeTriggeredSequence.routeTriggeredSequence">
+        function <span class="apidocSignatureSpan">everyauth.</span>routeTriggeredSequence
+        <span class="apidocSignatureSpan">(name, _module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RouteTriggeredSequence(name, _module) {
+  StepSequence.call(this, name, _module);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.routeTriggeredSequence.super_" id="apidoc.element.everyauth.routeTriggeredSequence.super_">
+        function <span class="apidocSignatureSpan">everyauth.routeTriggeredSequence.</span>super_
+        <span class="apidocSignatureSpan">(name, module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function StepSequence(name, module) {
+  this.name = name;
+  this.module = module;
+  this.orderedStepNames = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.routeTriggeredSequence.prototype" id="apidoc.module.everyauth.routeTriggeredSequence.prototype">module everyauth.routeTriggeredSequence.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.routeTriggeredSequence.prototype.routeHandler" id="apidoc.element.everyauth.routeTriggeredSequence.prototype.routeHandler">
+        function <span class="apidocSignatureSpan">everyauth.routeTriggeredSequence.prototype.</span>routeHandler
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">routeHandler = function (req, res, next) {
+  // Create a shallow clone, so that seq.values are different per HTTP request
+  var seq = this.materialize();
+  // Kicks off a sequence of steps based on a route
+  seq.start(req, res, next); // BOOM!
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.step" id="apidoc.module.everyauth.step">module everyauth.step</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.step.step" id="apidoc.element.everyauth.step.step">
+        function <span class="apidocSignatureSpan">everyauth.</span>step
+        <span class="apidocSignatureSpan">(name, _module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Step(name, _module) {
+  this.name = name;
+
+  // defineProperty; otherwise,
+  // clone will overflow when we clone a module
+  Object.defineProperty(this, 'module', { value: _module });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.step.prototype" id="apidoc.module.everyauth.step.prototype">module everyauth.step.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.step.prototype._unwrapArgs" id="apidoc.element.everyauth.step.prototype._unwrapArgs">
+        function <span class="apidocSignatureSpan">everyauth.step.prototype.</span>_unwrapArgs
+        <span class="apidocSignatureSpan">(seq)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_unwrapArgs = function (seq) {
+  return this.accepts.reduce( function (args, accept) {
+    args.push(seq.values[accept]);
+    return args;
+  }, []);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+
+if (this.debug) {
+  console.log('starting step - ' + this.name);
+}
+
+var args = this.<span class="apidocCodeKeywordSpan">_unwrapArgs</span>(seq);
+
+// There is a hidden last argument to every step function that
+// is all the data promised by prior steps up to the step's point
+// in time. We cannot anticipate everything a developer may want via
+// `accepts(...)`. Therefore, just in case, we give the developer
+// access to all data promised by prior steps via the last argument -- `seq.values`
+args.push(seq.values);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.step.prototype.clone" id="apidoc.element.everyauth.step.prototype.clone">
+        function <span class="apidocSignatureSpan">everyauth.step.prototype.</span>clone
+        <span class="apidocSignatureSpan">(name, _module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clone = function (name, _module) {
+  var step = new Step(name, _module);
+  step.accepts = clone(this.accepts);
+  step.promises = clone(this.promises);
+  step.description = this.description;
+  step.timeout = this.timeout;
+  step.errback = this.errback;
+  return step;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.step.prototype.exec" id="apidoc.element.everyauth.step.prototype.exec">
+        function <span class="apidocSignatureSpan">everyauth.step.prototype.</span>exec
+        <span class="apidocSignatureSpan">(seq)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exec = function (seq) {
+  var accepts = this.accepts;
+  var promises = this.promises;
+  var block = this.block;
+  var _module = this.module;
+  var stepName = this.name;
+  var step = this;
+  function errorCallback (error) {
+    // Ensure that seq.values are always passed back to moduleErrback
+    if (step.errback) {
+      step.errback(error, seq.values);
+    } else if (_module._moduleErrback) {
+      _module._moduleErrback(error, seq.values);
+    } else {
+      throw new Error('Missing module or step errback');
+    }
+  }
+
+
+  if (this.debug) {
+    console.log('starting step - ' + this.name);
+  }
+
+  var args = this._unwrapArgs(seq);
+
+  // There is a hidden last argument to every step function that
+  // is all the data promised by prior steps up to the step's point
+  // in time. We cannot anticipate everything a developer may want via
+  // `accepts(...)`. Therefore, just in case, we give the developer
+  // access to all data promised by prior steps via the last argument -- `seq.values`
+  args.push(seq.values);
+
+  var ret;
+  try {
+    // Apply the step logic
+
+    // Add _super access
+    _module._super = function () {
+      var step = this.__proto__._steps[stepName];
+      if (!step) return;
+      var superArgs = arguments.length ? arguments : args;
+      step.block.apply(this, superArgs);
+    };
+    ret = block.apply(_module, args);
+    delete _module._super;
+  } catch (breakTo) {
+    // Catch any sync breakTo's if any
+    if (breakTo.isSeq) {
+      if (this.module.everyauth.debug)
+        console.log("breaking out to " + breakTo.name);
+      breakTo.start.apply(breakTo, breakTo.initialArgs);
+      // TODO Garbage collect the promise chain
+      return;
+    } else {
+      // Else, we have a regular exception
+      errorCallback(breakTo);
+    }
+  }
+
+  if (promises &amp;&amp; promises.length &amp;&amp;
+        'undefined' === typeof ret) {
+    errorCallback(
+      new Error('Step ' + this.name + ' of `' + _module.name +
+        '` is promising: ' +  promises.join(', ') +
+        ' ; however, the step returns nothing. ' +
+        'Fix the step by returning the expected values OR ' +
+        'by returning a Promise that promises said values.')
+    );
+  }
+  // Convert return value into a Promise
+  // if it's not yet a Promise
+  ret = (ret instanceof Promise)
+      ? ret
+      : Array.isArray(ret)
+        ? promises.length === 1
+          ? this.module.Promise([ret])
+          : this.module.Promise(ret)
+        : this.module.Promise([ret]);
+
+  if (seq.debug) {
+    ret.callback( function () {
+      console.log('...finished step');
+    });
+  }
+
+  var convertErr = _module._convertErr;
+  if (convertErr) {
+    var oldErrback = ret.errback;
+    ret.errback = function (fn, scope) {
+      var oldFn = fn;
+      fn = function (err) {
+        if (err.constructor === Object) {
+          err = convertErr(err);
+        } else if ('string' === typeof err) {
+          err = new Error(err);
+        }
+        return oldFn.call(this, err);
+      };
+      return oldErrback.call(this, fn, scope);
+    };
+  }
+
+  ret.errback(errorCallback);
+
+  ret.callback( function () {
+    // Store the returned values
+    // in the sequence's state via seq.values
+    var returned = arguments
+      , vals = seq.values;
+    if (promises !== null) promises.forEach( function (valName, i) {
+      vals[valName] = returned[i];
+    });
+  });
+
+  ret.timeback( function () {
+    ret.fail(new Error('Step ' + stepName + ' of `' + _module.name + '` module timed out.'));
+  });
+
+  var timeoutMs = this.timeout || _module.moduleTimeout();
+  ret.timeout(timeoutMs);
+
+  return ret;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @returns {Promise}
+ */
+StepSequence.prototype._bind = function (priorPromise, nextStep) {
+  var nextPromise = new Promise();
+  var seq = this;
+
+  priorPromise.callback( function () {
+    var resultPromise = nextStep.<span class="apidocCodeKeywordSpan">exec</span>(seq);
+    if (!resultPromise) return; // if we have a breakTo
+    resultPromise.callback( function () {
+      nextPromise.fulfill();
+    }); // TODO breakback?
+  });
+  return nextPromise;
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.stepSequence" id="apidoc.module.everyauth.stepSequence">module everyauth.stepSequence</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.stepSequence" id="apidoc.element.everyauth.stepSequence.stepSequence">
+        function <span class="apidocSignatureSpan">everyauth.</span>stepSequence
+        <span class="apidocSignatureSpan">(name, module)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function StepSequence(name, module) {
+  this.name = name;
+  this.module = module;
+  this.orderedStepNames = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.stepSequence.prototype" id="apidoc.module.everyauth.stepSequence.prototype">module everyauth.stepSequence.prototype</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.prototype._bind" id="apidoc.element.everyauth.stepSequence.prototype._bind">
+        function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>_bind
+        <span class="apidocSignatureSpan">(priorPromise, nextStep)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_bind = function (priorPromise, nextStep) {
+  var nextPromise = new Promise();
+  var seq = this;
+
+  priorPromise.callback( function () {
+    var resultPromise = nextStep.exec(seq);
+    if (!resultPromise) return; // if we have a breakTo
+    resultPromise.callback( function () {
+      nextPromise.fulfill();
+    }); // TODO breakback?
+  });
+  return nextPromise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // Pipe through the steps
+  var priorStepPromise = steps[0].exec(this);
+
+  // If we have a breakTo
+  if (!priorStepPromise) return;
+
+  for (var i = 1, l = steps.length; i &lt; l; i++) {
+    priorStepPromise = this.<span class="apidocCodeKeywordSpan">_bind</span>(priorStepPromise, steps[i]);
+  }
+  return priorStepPromise;
+};
+
+// Used for exposing the leading promise of a step promise chain to the
+// incoming args (e.g., [req, res] pair from the route handler)
+StepSequence.prototype._transposeArgs = function (args) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.prototype._transposeArgs" id="apidoc.element.everyauth.stepSequence.prototype._transposeArgs">
+        function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>_transposeArgs
+        <span class="apidocSignatureSpan">(args)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_transposeArgs = function (args) {
+  var seq = this;
+  this.steps[0].accepts.forEach( function (paramName, i) {
+    // Map the incoming arguments to the named parameters
+    // that the first step is expected to accept.
+    seq.values[paramName] = args[i];
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * This kicks off a sequence of steps.
+ * Creates a new chain of promises and exposes the leading promise
+ * to the incoming (req, res) pair from the route handler
+ */
+StepSequence.prototype.start = function () {
+var steps = this.steps;
+
+this.<span class="apidocCodeKeywordSpan">_transposeArgs</span>(arguments);
+
+// Pipe through the steps
+var priorStepPromise = steps[0].exec(this);
+
+// If we have a breakTo
+if (!priorStepPromise) return;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.prototype.clone" id="apidoc.element.everyauth.stepSequence.prototype.clone">
+        function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>clone
+        <span class="apidocSignatureSpan">(submodule)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clone = function (submodule) {
+  var sequence = new (this.constructor)(this.name, submodule);
+  sequence.orderedStepNames = clone(this.orderedStepNames);
+  return sequence;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.prototype.materialize" id="apidoc.element.everyauth.stepSequence.prototype.materialize">
+        function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>materialize
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">materialize = function () {
+  var sequence = Object.create(this)
+    , materializedMethods = this._propertiesToMaterialize;
+  sequence.values = {};
+  for (var i = materializedMethods.length; i--;) {
+    var methodName = materializedMethods[i];
+    sequence[methodName] = this[methodName];
+  }
+  return sequence;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (this._timeout) clearTimeout(this._timeout);
+
+  var args = Array.prototype.slice.call(arguments, 1);
+  var _module = this.module
+    , seq = _module._stepSequences[seqName];
+  if (_module.everyauth.debug)
+    console.log('breaking out to ' + seq.name);
+  seq = seq.<span class="apidocCodeKeywordSpan">materialize</span>();
+  seq.start.apply(seq, args);
+  // TODO Garbage collect the abandoned sequence
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.prototype.start" id="apidoc.element.everyauth.stepSequence.prototype.start">
+        function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>start
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">start = function () {
+  var steps = this.steps;
+
+  this._transposeArgs(arguments);
+
+  // Pipe through the steps
+  var priorStepPromise = steps[0].exec(this);
+
+  // If we have a breakTo
+  if (!priorStepPromise) return;
+
+  for (var i = 1, l = steps.length; i &lt; l; i++) {
+    priorStepPromise = this._bind(priorStepPromise, steps[i]);
+  }
+  return priorStepPromise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+require('util').inherits(RouteTriggeredSequence, StepSequence);
+
+RouteTriggeredSequence.prototype.routeHandler = function (req, res, next) {
+  // Create a shallow clone, so that seq.values are different per HTTP request
+  var seq = this.materialize();
+  // Kicks off a sequence of steps based on a route
+  seq.<span class="apidocCodeKeywordSpan">start</span>(req, res, next); // BOOM!
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.stepSequence.prototype.validateSteps" id="apidoc.element.everyauth.stepSequence.prototype.validateSteps">
+        function <span class="apidocSignatureSpan">everyauth.stepSequence.prototype.</span>validateSteps
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateSteps = function () {
+  var steps = this.steps
+    , step
+    , paramsToDate = []
+    , missingParams;
+  for (var i = 0, l = steps.length; i &lt; l; i++) {
+    step = steps[i];
+    if ('undefined' === typeof step.accepts)
+      throw new Error('You did not declare accepts for the step: ' + step.name);
+    if ('undefined' === typeof step.promises)
+      throw new Error('You did not declare promises for the step: ' + step.name);
+
+    if (i === 0)
+      paramsToDate = paramsToDate.concat(step.accepts);
+
+    missingParams = step.accepts.filter( function (param) {
+      return paramsToDate.indexOf(param) === -1;
+    });
+
+    if (i &gt; 0 &amp;&amp; missingParams.length)
+      throw new Error('At step, ' + step.name + ', you are trying to access the parameters: ' +
+        missingParams.join(', ') + ' . However, only the following parameters have been ' +
+        'promised from prior steps thus far: ' + paramsToDate.join(', '));
+
+    paramsToDate = paramsToDate.concat(step.promises);
+
+    if ('undefined' === typeof this.module[step.name]())
+      // TODO Remove this Error, since invoking the arg to typeof (see line above)
+      //      already throws an Error
+      throw new Error('No one defined the function for the following step: ' + step.name + ' in the module ' + this.module.name);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.everyauth.utils" id="apidoc.module.everyauth.utils">module everyauth.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.utils.clone" id="apidoc.element.everyauth.utils.clone">
+        function <span class="apidocSignatureSpan">everyauth.utils.</span>clone
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clone(obj) {
+  if (obj === undefined || obj === null)
+    return obj
+  if (Array.isArray(obj))
+    return cloneArray(obj);
+  if (obj.constructor == Object)
+    return cloneObject(obj);
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.utils.extractHostname" id="apidoc.element.everyauth.utils.extractHostname">
+        function <span class="apidocSignatureSpan">everyauth.utils.</span>extractHostname
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function extractHostname(req) {
+  var headers = req.headers
+    , protocol = (req.connection.server instanceof tls.Server ||
+                 (req.headers['x-forwarded-proto'] &amp;&amp; req.headers['x-forwarded-proto'].slice(0,5) === 'https'))
+               ? 'https://'
+               : 'http://'
+    , host = headers.host;
+  return protocol + host;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.everyauth.utils.merge" id="apidoc.element.everyauth.utils.merge">
+        function <span class="apidocSignatureSpan">everyauth.utils.</span>merge
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function merge() {
+  var mergeInto = {};
+  for (var i = 0, l = arguments.length, mergeFrom, k; i &lt; l; i++) {
+    mergeFrom = arguments[i];
+    for (k in mergeFrom) {
+      mergeInto[k] = mergeFrom[k];
+    }
+  }
+  return mergeInto;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
